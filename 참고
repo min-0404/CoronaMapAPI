@@ -1,0 +1,16 @@
+// 아케이TV 카카오맵 API로 코로나맵 만들어보기
+https://www.youtube.com/watch?v=1JgpDcHEkFg
+
+// 카카오맵 웹개발 가이드
+https://apis.map.kakao.com/web/
+
+// 시작전 주의사항: 내 어플리케이션에서 플랫폼에서 오픈할 주소를 꼭 저장해줘야함
+
+// 중요!!!!!!!!!!!!!!!!
+// 1. 간단하게 브라우저로 html 파일 여는것은 IP주소 + 포트 형식으로 쉽게 열수 있지만 
+      지도 같은 SDK 형식 이용하려면 호스트 웹서버 만들어서 열어야함
+   2. 파이썬으로 간단하게 로컬웹서버 구축법 : 커맨드창에서 파이선 명령어로 원하는 파일을 8080서버에서 열어보기
+      <cd 원하는파일주소 -> python -m http.server 8080 -> 커맨드창에 실시간으로 정보볼수있음 (닫으면 서버 종료됨)>
+      참고: index.html 파일 있으면 바로 index.html 열림
+https://hyunsitstory.tistory.com/entry/Web-Server-%EA%B0%84%EB%8B%A8%ED%95%9Clocalhost-%EC%9B%B9-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95-%EB%B0%A9%EB%B2%95-1
+https://docs.microsoft.com/ko-kr/gaming/playfab/features/authentication/platform-specific-authentication/running-an-http-server-for-testing
