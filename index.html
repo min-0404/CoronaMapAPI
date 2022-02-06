@@ -4,17 +4,44 @@
 	<title>Kakao 지도 시작하기</title>
 </head>
 <body>
-	<div id="map" style="width:500px;height:400px;"></div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2c85859e8cd87af1b6955fe4d953fd2
-    "></script>
-	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
+	<div id="map" style="width:100%;height:100vh;"></div>
 
-		var map = new kakao.maps.Map(container, options);
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+    
+    <!-- 실제 지도를 그리는 자바스크립트 API 불러오기 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2c85859e8cd87af1b6955fe4d953fd2&libraries=clusterer"></script>
+
+    <!-- 지도를 띄우는 코드 작성 -->
+	<script>
+        // 1. 지도 그리기
+		var container = document.getElementById('map'); // 지도를 담을 영역의  DOM 레퍼런스
+		var options = { // 지도를 생성할때 필요한 기본 옵션
+			center: new kakao.maps.LatLng(37.551013, 126.925993), // 지도의 중심좌표 
+			level: 3 // 확대 및 축소 정도
+		};
+		var map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
+
+        // 2. 마커 + 인포윈도우 그리기
+        var data = [
+            [37.551013, 126.925993, '<div style="padding:5px;">여기는 홍익대학교</div>'],
+            [37.559034, 126.925428, '<div style="padding:5px;">여기는 경의선 숲길</div>'],
+            [37.566310, 126.938478, '<div style="padding:5px;">여기는 연세대학교</div>']
+        ];
+        for(var i = 0; data.length; i++){
+            var iwContent = data[i][2], // 인포윈도우에 표출될 내용
+            iwPosition = new kakao.maps.LatLng(data[i][0], data[i][1]), //인포윈도우를 표시할 위치입니다
+            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+            // 인포윈도우를 생성하고 지도에 표시합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                map: map, // 인포윈도우가 표시될 지도
+                position : iwPosition, 
+                content : iwContent,
+                removable : iwRemoveable});
+        }
+
 	</script>
 </body>
 </html>
